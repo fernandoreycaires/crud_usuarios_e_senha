@@ -67,7 +67,13 @@ public class UsuariosController {
         var usuarioModel = new UsuariosModel();
         BeanUtils.copyProperties(usuariosDto, usuarioModel);
         usuarioModel.setId(usuariosModelOptional.get().getId());
-        usuarioModel.setPassword(new BCryptPasswordEncoder().encode(usuarioModel.getPassword()));
+        if (usuariosDto.getNome() == null) { usuarioModel.setNome(usuariosModelOptional.get().getNome()); }
+        if (usuariosDto.getLogin() == null) { usuarioModel.setLogin(usuariosModelOptional.get().getLogin()); }
+        if (usuariosDto.getPassword() == null) { usuarioModel.setPassword(usuariosModelOptional.get().getPassword());}
+        if (usuariosDto.getPassword() != null) { usuarioModel.setPassword(new BCryptPasswordEncoder().encode(usuariosDto.getPassword()));
+        }
+
         return ResponseEntity.status(HttpStatus.OK).body(usuariosService.save(usuarioModel));
     }
+
 }

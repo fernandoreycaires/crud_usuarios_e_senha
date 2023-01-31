@@ -4,11 +4,11 @@ import jakarta.validation.constraints.NotBlank;
 
 public class UsuariosDto {
 
-    @NotBlank
+    //@NotBlank
     private String login;
-    @NotBlank
+    //@NotBlank
     private String nome;
-    @NotBlank
+    //@NotBlank
     private String password;
 
     public String getLogin() {
