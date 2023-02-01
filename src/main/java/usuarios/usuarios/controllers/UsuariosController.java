@@ -70,8 +70,7 @@ public class UsuariosController {
         if (usuariosDto.getNome() == null) { usuarioModel.setNome(usuariosModelOptional.get().getNome()); }
         if (usuariosDto.getLogin() == null) { usuarioModel.setLogin(usuariosModelOptional.get().getLogin()); }
         if (usuariosDto.getPassword() == null) { usuarioModel.setPassword(usuariosModelOptional.get().getPassword());}
-        if (usuariosDto.getPassword() != null) { usuarioModel.setPassword(new BCryptPasswordEncoder().encode(usuariosDto.getPassword()));
-        }
+        if (usuariosDto.getPassword() != null) { usuarioModel.setPassword(new BCryptPasswordEncoder().encode(usuariosDto.getPassword()));}
 
         return ResponseEntity.status(HttpStatus.OK).body(usuariosService.save(usuarioModel));
     }
