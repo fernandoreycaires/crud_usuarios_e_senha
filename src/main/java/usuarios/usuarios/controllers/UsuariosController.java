@@ -31,6 +31,7 @@ public class UsuariosController {
         BeanUtils.copyProperties(usuariosDto, usuariosModel);
         usuariosModel.setPassword(new BCryptPasswordEncoder().encode(usuariosModel.getPassword()));
         return ResponseEntity.status(HttpStatus.CREATED).body(usuariosService.save(usuariosModel));
+
     }
 
     @GetMapping

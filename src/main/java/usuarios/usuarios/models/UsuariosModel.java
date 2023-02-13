@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -22,6 +24,19 @@ public class UsuariosModel implements Serializable {
 
     @JsonIgnore
     private String password;
+
+    @ManyToMany
+    @JoinTable(name = "usuarios_roles",
+            joinColumns = @JoinColumn(
+                    name = "usuarios_login",
+                    referencedColumnName = "login"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role",
+                    referencedColumnName = "nomeRole"
+            ) )
+    private List<RolesModel> roles = new ArrayList<>();
+
 
     public UUID getId() {
         return id;
@@ -54,4 +69,14 @@ public class UsuariosModel implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public List<RolesModel> getRolesModels() {
+        return roles;
+    }
+
+    public void setRolesModels(List<RolesModel> rolesModels) {
+        this.roles = rolesModels;
+    }
+
+
 }
