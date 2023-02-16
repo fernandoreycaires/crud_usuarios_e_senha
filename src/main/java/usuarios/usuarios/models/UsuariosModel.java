@@ -12,6 +12,8 @@ import java.util.UUID;
 @Table(name = "TB_USUARIOS")
 public class UsuariosModel implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
@@ -28,8 +30,8 @@ public class UsuariosModel implements Serializable {
     @ManyToMany
     @JoinTable(name = "usuarios_roles",
             joinColumns = @JoinColumn(
-                    name = "usuarios_login",
-                    referencedColumnName = "login"
+                    name = "usuarios_id",
+                    referencedColumnName = "id"
             ),
             inverseJoinColumns = @JoinColumn(
                     name = "role",
