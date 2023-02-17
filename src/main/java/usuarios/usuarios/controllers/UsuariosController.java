@@ -81,7 +81,7 @@ public class UsuariosController {
     }
 
     @PutMapping("/role")
-    public ResponseEntity<Object> UpdateRoleUsuario (@RequestBody @Valid UsuariosRolesDto usuariosRolesDto) {
+    public ResponseEntity<Object> UpdateRoleUsuario(@RequestBody @Valid UsuariosRolesDto usuariosRolesDto) {
 
         return ResponseEntity.status(HttpStatus.OK).body(usuariosRolesService.saveUsuarioRole(usuariosRolesDto.getId(), usuariosRolesDto.getNomeRole()));
     }
