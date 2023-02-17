@@ -7,6 +7,7 @@ import jakarta.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "TB_ROLES")
@@ -16,7 +17,7 @@ public class RolesModel implements GrantedAuthority {
     private String nomeRole;
 
     @ManyToMany(mappedBy = "roles")
-    private List<UsuariosModel> usuarios;
+    private Set<UsuariosModel> usuarios;
 
     public String getNomeRole() {
         return nomeRole;
@@ -26,11 +27,11 @@ public class RolesModel implements GrantedAuthority {
         this.nomeRole = nomeRole;
     }
 
-    public List<UsuariosModel> getUsuarios() {
+    public Set<UsuariosModel> getUsuarios() {
         return usuarios;
     }
 
-    public void setUsuarios(List<UsuariosModel> usuarios) {
+    public void setUsuarios(Set<UsuariosModel> usuarios) {
         this.usuarios = usuarios;
     }
 
@@ -38,7 +39,5 @@ public class RolesModel implements GrantedAuthority {
     public String getAuthority() {
         return null;
     }
-
-
 
 }

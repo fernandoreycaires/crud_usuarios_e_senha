@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -37,7 +38,7 @@ public class UsuariosModel implements Serializable {
                     name = "role",
                     referencedColumnName = "nomeRole"
             ) )
-    private List<RolesModel> roles = new ArrayList<>();
+    private Set<RolesModel> roles;
 
 
     public UUID getId() {
@@ -72,11 +73,11 @@ public class UsuariosModel implements Serializable {
         this.password = password;
     }
 
-    public List<RolesModel> getRolesModels() {
+    public Set<RolesModel> getRolesModels() {
         return roles;
     }
 
-    public void setRolesModels(List<RolesModel> rolesModels) {
+    public void setRolesModels(Set<RolesModel> rolesModels) {
         this.roles = rolesModels;
     }
 
