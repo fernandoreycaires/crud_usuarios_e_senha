@@ -7,7 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import usuarios.usuarios.dtos.UsuariosDto;
+import usuarios.usuarios.dtos.UsuariosRolesDto;
 import usuarios.usuarios.models.UsuariosModel;
+import usuarios.usuarios.services.UsuariosRolesService;
 import usuarios.usuarios.services.UsuariosService;
 
 import java.util.List;
@@ -20,9 +22,11 @@ import java.util.UUID;
 public class UsuariosController {
 
     final UsuariosService usuariosService;
+    final UsuariosRolesService usuariosRolesService;
 
-    public UsuariosController(UsuariosService usuariosService) {
+    public UsuariosController(UsuariosService usuariosService, UsuariosRolesService usuariosRolesService) {
         this.usuariosService = usuariosService;
+        this.usuariosRolesService = usuariosRolesService;
     }
 
     @PostMapping
@@ -74,6 +78,12 @@ public class UsuariosController {
         if (usuariosDto.getPassword() != null) { usuarioModel.setPassword(new BCryptPasswordEncoder().encode(usuariosDto.getPassword()));}
 
         return ResponseEntity.status(HttpStatus.OK).body(usuariosService.save(usuarioModel));
+    }
+
+    @PutMapping("/role")
+    public ResponseEntity<Object> UpdateRoleUsuario (@RequestBody @Valid UsuariosRolesDto usuariosRolesDto) {
+
+        return ResponseEntity.status(HttpStatus.OK).body(usuariosRolesService.saveUsuarioRole(usuariosRolesDto.getId(), usuariosRolesDto.getNomeRole()));
     }
 
 }

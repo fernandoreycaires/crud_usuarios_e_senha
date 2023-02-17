@@ -14,7 +14,6 @@ public class UsuariosService {
 
     final UsuariosRepository usuariosRepository;
 
-
     public UsuariosService(UsuariosRepository usuariosRepository) {
         this.usuariosRepository = usuariosRepository;
     }
@@ -23,7 +22,6 @@ public class UsuariosService {
     public UsuariosModel save(UsuariosModel usuariosModel) {
         return usuariosRepository.save(usuariosModel);
     }
-
 
     public List<UsuariosModel> findAll() {
         return (List<UsuariosModel>) usuariosRepository.findAll();
