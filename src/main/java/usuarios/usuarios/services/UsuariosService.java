@@ -31,6 +31,14 @@ public class UsuariosService {
         return usuariosRepository.findByLogin(login);
     }
 
+/*    public List<UsuariosModel> findAllUsers() {
+        return usuariosRepository.findAllUsers();
+    }
+
+    public Optional<UsuariosModel> findOneUser(String login) {
+        return usuariosRepository.findOneUsers(login);
+    }*/
+
     public Optional<UsuariosModel> findById(UUID id) {
         return usuariosRepository.findById(id);
     }

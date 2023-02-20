@@ -43,6 +43,11 @@ public class UsuariosController {
         return ResponseEntity.status(HttpStatus.OK).body(usuariosService.findAll());
     }
 
+/*    @GetMapping
+    public ResponseEntity<List<UsuariosModel>> getAllUsuarios(){
+        return ResponseEntity.status(HttpStatus.OK).body(usuariosService.findAllUsers());
+    }*/
+
     @GetMapping("/{login}")
     public ResponseEntity<Object> getoneusuario(@PathVariable(value = "login") String login){
         Optional<UsuariosModel> usuariosModeloptional = usuariosService.findByLogin(login);
@@ -51,6 +56,15 @@ public class UsuariosController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(usuariosModeloptional.get());
     }
+
+/*    @GetMapping("/{login}")
+    public ResponseEntity<Object> getoneusuario(@PathVariable(value = "login") String login){
+        Optional<UsuariosModel> usuariosModeloptional = usuariosService.findOneUser(login);
+        if (!usuariosModeloptional.isPresent()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario não encontrado !");
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(usuariosModeloptional.get());
+    }*/
 
     @DeleteMapping("/{login}")
     public ResponseEntity<Object> deleteUsuario(@PathVariable(value = "login") String login){

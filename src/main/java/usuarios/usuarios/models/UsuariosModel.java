@@ -1,11 +1,10 @@
 package usuarios.usuarios.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -29,6 +28,7 @@ public class UsuariosModel implements Serializable {
     private String password;
 
     @ManyToMany
+    @JsonManagedReference
     @JoinTable(name = "usuarios_roles",
             joinColumns = @JoinColumn(
                     name = "usuarios_id",

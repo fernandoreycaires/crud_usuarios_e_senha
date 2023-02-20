@@ -1,5 +1,6 @@
 package usuarios.usuarios.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
@@ -16,6 +17,7 @@ public class RolesModel implements GrantedAuthority {
     @Id
     private String nomeRole;
 
+    @JsonBackReference
     @ManyToMany(mappedBy = "roles")
     private Set<UsuariosModel> usuarios;
 
