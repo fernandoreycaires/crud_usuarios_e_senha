@@ -15,9 +15,4 @@ public interface UsuariosRepository extends CrudRepository<UsuariosModel, String
     Optional<UsuariosModel> findByLogin(String login);
     Optional<UsuariosModel> findById(UUID id);
 
-/*    @Query(value = "SELECT * FROM tb_usuarios JOIN usuarios_roles ON usuarios_id = id", nativeQuery = true)
-    List<UsuariosModel> findAllUsers();
-
-    @Query(value = "SELECT * FROM tb_usuarios JOIN usuarios_roles ON usuarios_id = id WHERE login = login", nativeQuery = true)
-    Optional<UsuariosModel> findOneUsers(String login);*/
 }
